@@ -9,7 +9,13 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install -r requirements.txt
-      
+      - name: Install macos dependencies
+        run: brew install create-dmg
+      - name: Build MacOS application
+        run : |
+          pyinstaller -n "SJTU-Canvas视频下载器" -w main.py
+          mkdir -p dist/dmg
+          cp -r dist/SJTU-Canvas视频下载器.app dist/dmg
   # win:
   #   runs-on: windows-latest
   #   steps:
