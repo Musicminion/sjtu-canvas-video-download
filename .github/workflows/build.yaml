@@ -10,7 +10,10 @@ jobs:
           python-version: "3.10"
       - run: pip install -r requirements.txt
       - name: Install macos dependencies
-        run: brew install create-dmg
+        run: |
+          brew install create-dmg
+          brew install python-tk
+          brew install aria2
       - name: Build MacOS application
         run : |
           pyinstaller -n "SJTU-Canvas视频下载器" -w main.py
