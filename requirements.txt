@@ -3,3 +3,4 @@ Pillow
 requests
 websocket-client
 pyinstaller
+pygame

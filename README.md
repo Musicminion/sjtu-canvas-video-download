@@ -30,8 +30,8 @@ sudo pip3 install -r requirements.txt
 需要安装`python3-tk`, `python3-pil.imagetk`, `aria2`.
 
 ```sh
-sudo apt install python3-tk
-sudo apt install python3-pil.imagetk
+sudo apt install python3-tk   # mac用户请安装brew并执行 brew install python-tk
+sudo apt install python3-pil.imagetk # mac用户
 sudo apt install aria2
 ```
 
