@@ -12,7 +12,7 @@
 
 ![课程ID](README.assets/课程ID.PNG)
 
-### 非Windows用户使用方法
+### Linux用户使用方法
 
 目前只能使用源代码运行. 以Ubuntu 20.04为例. 请安装`python3`, `python3-pip`.
 
@@ -31,7 +31,7 @@ sudo pip3 install -r requirements.txt
 
 ```sh
 sudo apt install python3-tk   # mac用户请安装brew并执行 brew install python-tk
-sudo apt install python3-pil.imagetk # mac用户
+sudo apt install python3-pil.imagetk
 sudo apt install aria2
 ```
 
@@ -42,3 +42,12 @@ python3 main.py
 ```
 
 启动本程序了.
+
+### MacOS用户使用方法
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install python-tk aria2
+pip3 install -r requirements.txt
+```
+

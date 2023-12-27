@@ -2,6 +2,7 @@ import time
 import os
 import sys
 import subprocess
+import threading
 import tkinter.messagebox
 from sjtu_history import history, save_history
 
@@ -49,16 +50,26 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
             creationflags=subprocess.CREATE_NEW_CONSOLE
         )
     else:
-        tkinter.messagebox.showinfo("提示", "请查看控制台输出")
+        tkinter.messagebox.showinfo("提示", "请查看运行输出信息(5s更新一次)")
         try:
-            subprocess.run(
+            proc = subprocess.Popen(
                 [
                     "aria2c",
                     "-d", video_dirname,
                     "-i", aria2_txt_filename,
                     "-x", str(16),
-                    "--auto-file-renaming=false"
-                ]
+                    "--auto-file-renaming=false",
+                    "--summary-interval=5",
+                ],
+                stdout=subprocess.PIPE
             )
+
+            def getChildProcOutput():
+                for line in iter(proc.stdout.readline, b''):
+                    print(line.decode("utf-8"), end='')
+
+            thread = threading.Thread(target=getChildProcOutput)
+            thread.start()
+
         except KeyboardInterrupt:
             pass

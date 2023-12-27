@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.filedialog
 import tkinter.messagebox
+import tkinter.scrolledtext
 from sjtu_login import login_using_cookies
 from sjtu_login_frame import LoginFrame
 from sjtu_qr_code_login_frame import QRCodeLoginFrame
@@ -10,7 +11,21 @@ from sjtu_canvas_video import get_all_courses
 from sjtu_real_canvas_video import get_real_canvas_videos, get_real_canvas_videos_using_sub_cookies
 from sjtu_history_frame import HistoryFrame
 import json
+import sys
 
+
+class TextRedirector(object):
+    def __init__(self, widget):
+        self.widget = widget
+
+    def write(self, str):
+        self.widget.config(state=tkinter.NORMAL)
+        self.widget.insert(tkinter.END, str)
+        self.widget.see(tkinter.END)
+        self.widget.config(state=tkinter.DISABLED)
+
+    def flush(self):
+        pass
 
 class MainFrame(tk.Frame):
     def __init__(self, master=None):
@@ -143,6 +158,26 @@ class MainFrame(tk.Frame):
         self.course_id_update_button.grid(
             column=3, row=num_row
         )
+        num_row += 1
+
+        # 添加一个label 用于显示软件输出的信息
+        self.output_label = tk.Label(self, text="运行时输出信息")
+        self.output_label.grid(column=0, row=num_row, columnspan=4)
+        num_row += 1
+
+
+        # 添加一个可以滚动的文本输出框scrolled_text 不可以编辑
+        self.scrolled_text = tkinter.scrolledtext.ScrolledText(
+            self,
+            # wrap=tk.WORD,
+            width=80,
+            height=10,
+            state=tk.DISABLED
+        )
+        self.scrolled_text.grid(column=0, row=num_row, columnspan=4)
+
+        # 将标准输出重定向到scrolled_text
+        sys.stdout = TextRedirector(self.scrolled_text)
         num_row += 1
 
         self.status_label = tk.Label(self)
