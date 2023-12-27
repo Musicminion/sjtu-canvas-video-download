@@ -21,10 +21,7 @@ jobs:
           cp -r dist/SJTU-Canvas视频下载器.app dist/dmg
       - name: Create dmg
         run : 
-          create-dmg
-          --volname "SJTU-Canvas视频下载器"
-          "dist/SJTU-Canvas视频下载器.dmg"
-          "dist/dmg/"
+          create-dmg --volname "SJTU-Canvas视频下载器" "dist/SJTU-Canvas视频下载器.dmg" "dist/dmg/"
       - name: Upload dmg
         uses: actions/upload-artifact@v3.1.2
         with:
