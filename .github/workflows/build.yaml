@@ -5,6 +5,22 @@ jobs:
     runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Update Submodules
+        run: |
+          git submodule update --recursive --remote
+      - name: Commit Update
+        uses: stefanzweifel/git-auto-commit-action@v5
+      # 后面对文件可能进行修改，不要在这里commit 
+      - name: Compile aria2
+        run: |
+          cd aria2-git
+          brew install libxml2-dev libcppunit-dev autoconf automake autotools-dev autopoint libtool
+          autoreconf -i
+          ./configure ARIA2_STATIC=yes
+          make
+          cp src/aria2c ../aria2
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
