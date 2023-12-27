@@ -16,7 +16,7 @@ jobs:
       - name: Compile aria2
         run: |
           cd aria2-git
-          brew install libxml2-dev libcppunit-dev autoconf automake autotools-dev autopoint libtool
+          brew install libxml2 libcppunit autoconf automake autotools autopoint libtool
           autoreconf -i
           ./configure ARIA2_STATIC=yes
           make
