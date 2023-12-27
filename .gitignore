@@ -9,3 +9,4 @@ __pycache__/
 /history.json
 SJTU-Canvas视频下载器.spec
 .DS_Store
+aria2/aria2c
