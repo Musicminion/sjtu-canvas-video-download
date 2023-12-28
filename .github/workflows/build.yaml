@@ -32,8 +32,7 @@ jobs:
             ${{ runner.os }}-aria2-${{ env.cache-name }}-
             ${{ runner.os }}-aria2-
             ${{ runner.os }}-
-      - if: steps.cache.outputs.cache-hit != 'true'
-        name: Compile aria2
+      - name: Compile aria2
         run: |
           cd aria2-git
           brew install libxml2 libcpuid autoconf automake atool libtool
