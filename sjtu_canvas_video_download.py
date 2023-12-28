@@ -15,6 +15,19 @@ aria2_exe_filename = os.path.join(
     self_dirname, "aria2", "aria2c.exe"
 )
 
+aria2_macos_filename = "aria2c"
+
+if getattr(sys, 'frozen', False):
+    app_root = os.path.dirname(self_dirname)
+    aria2_macos_filename = os.path.join(
+        app_root, "Frameworks", "aria2", "aria2c"
+    )
+else:
+    # unfrozen
+    aria2_macos_filename = os.path.join(
+        self_dirname, "aria2", "aria2c"
+    )
+
 
 def download_courses(course_links, course_filenames, video_dirname, no_record=False):
     if not no_record:
@@ -52,9 +65,10 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
     else:
         tkinter.messagebox.showinfo("提示", "请查看运行输出信息(5s更新一次)")
         try:
+            # Popen是异步的
             proc = subprocess.Popen(
                 [
-                    "aria2c",
+                    aria2_macos_filename,
                     "-d", video_dirname,
                     "-i", aria2_txt_filename,
                     "-x", str(16),

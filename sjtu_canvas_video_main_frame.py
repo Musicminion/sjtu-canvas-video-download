@@ -178,6 +178,8 @@ class MainFrame(tk.Frame):
 
         # 将标准输出重定向到scrolled_text
         sys.stdout = TextRedirector(self.scrolled_text)
+        # 还有标准错误
+        sys.stderr = TextRedirector(self.scrolled_text)
         num_row += 1
 
         self.status_label = tk.Label(self)
