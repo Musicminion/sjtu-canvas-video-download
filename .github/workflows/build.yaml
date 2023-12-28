@@ -15,11 +15,16 @@ jobs:
       - name: Commit Update
         uses: stefanzweifel/git-auto-commit-action@v5
       # 后面对文件可能进行修改，不要在这里commit 
+      # 设置环境变量
+      - name: Get aria2 latset commit ID
+        run:
+          cd aria2-git
+          echo "cache-name=$(git rev-parse HEAD)" >> ../aria2-hash.txt
       - name: Cache aria2
         uses: actions/cache@v3
         with:
           path: aria2-git
-          key: ${{ runner.os }}-aria2-${{ env.cache-name }}-${{ cd aria2-git && git rev-parse HEAD }}
+          key: ${{ runner.os }}-aria2-${{ env.cache-name }}-${{ hashFiles('aria2-hash.txt') }}
           restore-keys: |
             ${{ runner.os }}-aria2-${{ env.cache-name }}-
             ${{ runner.os }}-aria2-
