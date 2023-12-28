@@ -32,14 +32,17 @@ jobs:
             ${{ runner.os }}-aria2-${{ env.cache-name }}-
             ${{ runner.os }}-aria2-
             ${{ runner.os }}-
-      - name: Compile aria2
+      - if: steps.cache.outputs.cache-hit != 'true'
+        name: Compile aria2
         run: |
           cd aria2-git
           brew install libxml2 libcpuid autoconf automake atool libtool
           autoreconf -i
           ./configure ARIA2_STATIC=yes
           make
-          cp src/aria2c ../aria2
+        - name: Copy aria2c
+          run: |
+            cp src/aria2c ../aria2
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
