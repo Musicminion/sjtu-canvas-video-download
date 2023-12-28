@@ -20,6 +20,7 @@ jobs:
         run: |
           cd aria2-git
           echo "cache-name=$(git rev-parse HEAD)" >> ../aria2-hash.txt
+          brew install tree
           tree
       - name: Cache aria2
         id: cache
