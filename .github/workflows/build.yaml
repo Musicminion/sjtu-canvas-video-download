@@ -17,7 +17,7 @@ jobs:
       # 后面对文件可能进行修改，不要在这里commit 
       # 设置环境变量
       - name: Get aria2 latset commit ID
-        run:
+        run: |
           cd aria2-git
           echo "cache-name=$(git rev-parse HEAD)" >> ../aria2-hash.txt
           tree
