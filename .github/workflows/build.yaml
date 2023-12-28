@@ -34,7 +34,7 @@ jobs:
           brew install aria2
       - name: Build MacOS application
         run : |
-          pyinstaller --add-data './aria2/aria2c:./aria2' -n "SJTU-Canvas视频下载器" -w main.py 
+          pyinstaller --add-data './aria2/aria2c:./aria2' -n "SJTU-Canvas视频下载器" -w  --icon=icons/canvas.icns main.py 
           mkdir -p dist/dmg
           cp -r dist/SJTU-Canvas视频下载器.app dist/dmg
       - name: Create dmg
