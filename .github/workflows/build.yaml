@@ -21,6 +21,7 @@ jobs:
           cd aria2-git
           echo "cache-name=$(git rev-parse HEAD)" >> ../aria2-hash.txt
       - name: Cache aria2
+        id: cache
         uses: actions/cache@v3
         with:
           path: aria2-git
