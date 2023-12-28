@@ -42,6 +42,7 @@ jobs:
           make
       - name: Copy aria2c
         run: |
+          cd aria2-git
           cp src/aria2c ../aria2
       - uses: actions/setup-python@v4
         with:
