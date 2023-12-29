@@ -78,7 +78,7 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip3 install -r requirements.txt
-      - run: pyinstaller main.py
+      - run: pyinstaller --add-data "./aria2/aria2c.exe;./aria2" -n "SJTU-Canvas视频下载器" -w  --icon=icons/canvas.ico main.py
       - run: xcopy aria2\ dist\main\aria2\ /e /i /y
       - uses: actions/upload-artifact@v3
         with:
@@ -92,7 +92,7 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install -r requirements.txt
-      - run: pyinstaller main.py
+      - run: pyinstaller -n "SJTU-Canvas视频下载器" -w  --icon=icons/canvas.png main.py
       - uses: actions/upload-artifact@v3
         with:
           name: canvas-downloader-linux-x86-64
