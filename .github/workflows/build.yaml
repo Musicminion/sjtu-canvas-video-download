@@ -82,7 +82,7 @@ jobs:
       - run: xcopy aria2\ dist\main\aria2\ /e /i /y
       - uses: actions/upload-artifact@v3
         with:
-          name: windows
+          name: canvas-downloader-win.zip
           path: dist/main/
       # - run: Compress-Archive dist\main\* windows.zip
       # - id: create_release
@@ -100,3 +100,16 @@ jobs:
       #     asset_path: windows.zip
       #     asset_name: windows.zip
       #     asset_content_type: application/zip
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install -r requirements.txt
+      - run: pyinstaller main.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: canvas-downloader-linux.zip
+          path: dist/main/
