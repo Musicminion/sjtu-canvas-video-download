@@ -67,7 +67,7 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
             creationflags=subprocess.CREATE_NEW_CONSOLE
         )
     # linux
-    else if sys.platform == "linux":
+    elif sys.platform == "linux":
         tkinter.messagebox.showinfo("提示", "请查看运行输出信息(5s更新一次)")
         try:
             # Popen是异步的
@@ -89,8 +89,9 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
 
             thread = threading.Thread(target=getChildProcOutput)
             thread.start()
-
-    else if sys.platform == "darwin":
+        except KeyboardInterrupt:
+            pass
+    elif sys.platform == "darwin":
         tkinter.messagebox.showinfo("提示", "请查看运行输出信息(5s更新一次)")
         try:
             # Popen是异步的
@@ -112,8 +113,8 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
 
             thread = threading.Thread(target=getChildProcOutput)
             thread.start()
-    
-    else:
-        tkinter.messagebox.showerror("错误", "不支持的系统" + sys.platform)
         except KeyboardInterrupt:
             pass
+    else:
+        tkinter.messagebox.showerror("错误", "不支持的系统" + sys.platform)
+

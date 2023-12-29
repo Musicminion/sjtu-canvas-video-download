@@ -1,4 +1,5 @@
 import tkinter as tk
+import sys
 from sjtu_canvas_video_main_frame import MainFrame
 
 root = tk.Tk()
