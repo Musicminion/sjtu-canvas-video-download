@@ -7,10 +7,11 @@
 <img width="584" alt="截屏2023-12-28 11 41 02" src="https://github.com/Musicminion/sjtu-canvas-video-download/assets/84625273/951bf04b-dcb1-474a-8066-924df94eb344">
 
 ### 下载链接
-- windows版本：待更新
-- Linux版本：待更新
+- windows版本：[下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases)
+- Linux版本：[下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases)
 - M1的Mac版本：[下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases)
 - Intel的Mac版本：[下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases)
+- 如果你对安全性有要求，坚持要从GitAction构建的下载：请前往[Workflow runs · Musicminion/sjtu-canvas-video-download (github.com)](https://github.com/Musicminion/sjtu-canvas-video-download/actions)，但是注意：GitAction只有mac-intel、windows、linux-x86-64的系统版本哦
 
 
 ### 使用说明
@@ -27,15 +28,13 @@
 ### Windows用户使用方法
 
 - 前往[发布下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases/tag/v1.0)下载对应的Windows版本。
-- 
-
-
-
-
+- 解压后打开`exe`文件即可
 
 ### Linux用户使用方法
 
-首先，
+- 首先，前往[发布下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases/tag/v1.0)下载对应的Linux版本。
+- 然后安装`aria2`，请执行`sudo apt-get update`和`sudo apt install aria2`
+- 解压后打开可执行文件即可
 
 
 

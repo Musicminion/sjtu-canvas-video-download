@@ -96,7 +96,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: canvas-downloader-linux-x86-64
-          path: dist/main/
+          path: dist/SJTU-Canvas视频下载器/
 
       # - run: Compress-Archive dist\main\* windows.zip
       # - id: create_release
