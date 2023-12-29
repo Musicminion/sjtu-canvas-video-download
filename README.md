@@ -1,10 +1,17 @@
-## SJTU Canvas 视频 (批量) 下载器
-
-本项目使用GitHub Actions自动发布, 保证可执行文件的安全性.
+## SJTU Canvas 视频 (批量) 下载器【Mac版】
 
 ### 主界面展示
 
-![main](README.assets/main.png)
+<img width="812" alt="截屏2023-12-28 11 40 31" src="https://github.com/Musicminion/sjtu-canvas-video-download/assets/84625273/3002982b-0617-40f6-a798-2dd62a5aa6a5">
+
+<img width="584" alt="截屏2023-12-28 11 41 02" src="https://github.com/Musicminion/sjtu-canvas-video-download/assets/84625273/951bf04b-dcb1-474a-8066-924df94eb344">
+
+### 下载链接
+- windows版本：待更新
+- Linux版本：待更新
+- M1的Mac版本：[下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases)
+- Intel的Mac版本：[下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases)
+
 
 ### 使用说明
 
