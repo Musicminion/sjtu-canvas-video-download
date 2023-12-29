@@ -1,5 +1,7 @@
 ## SJTU Canvas 视频 (批量) 下载器【Mac版】
 
+[![Build](https://github.com/Musicminion/sjtu-canvas-video-download/actions/workflows/build.yaml/badge.svg)](https://github.com/Musicminion/sjtu-canvas-video-download/actions/workflows/build.yaml)
+
 ### 主界面展示
 
 <img width="812" alt="截屏2023-12-28 11 40 31" src="https://github.com/Musicminion/sjtu-canvas-video-download/assets/84625273/3002982b-0617-40f6-a798-2dd62a5aa6a5">
@@ -34,19 +36,15 @@
 
 - 首先，前往[发布下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases/tag/v1.0)下载对应的Linux版本。
 - 然后安装`aria2`，请执行`sudo apt-get update`和`sudo apt install aria2`
-- 解压后打开可执行文件即可
+- 解压后打开可执行文件`sjtu-canvas下载器`即可
 
+### Mac用户使用办法
 
+- 首先，前往[发布下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases/tag/v1.0)下载对应的Mac版本（注意M1/Intel的区别）。
+- 解压后打开dmg文件，然后把下载器拖动到Application中
+- 然后稍等，在启动台就可以找到这个APP啦
 
-
-
-
-
-
-
-
-
-
+<img width="812" alt="截屏2023-12-28 11 40 31" src="https://github.com/Musicminion/sjtu-canvas-video-download/assets/84625273/3002982b-0617-40f6-a798-2dd62a5aa6a5">
 
 ### Linux用户源代码构建方法
 
