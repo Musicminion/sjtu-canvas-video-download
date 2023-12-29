@@ -19,7 +19,37 @@
 
 ![课程ID](README.assets/课程ID.PNG)
 
+- 勾选选项：**使用课程ID**
+- 然后在**课程ID**里面输入形如`12345`的课程编号
+- 再点击**更新课程ID**
+- 最后点击**批量下载**，选择你需要下载的范围
+
+### Windows用户使用方法
+
+- 前往[发布下载链接](https://github.com/Musicminion/sjtu-canvas-video-download/releases/tag/v1.0)下载对应的Windows版本。
+- 
+
+
+
+
+
 ### Linux用户使用方法
+
+首先，
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Linux用户源代码构建方法
 
 目前只能使用源代码运行. 以Ubuntu 20.04为例. 请安装`python3`, `python3-pip`.
 

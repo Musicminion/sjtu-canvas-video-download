@@ -77,7 +77,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      - run: pip install -r requirements.txt
+      - run: pip3 install -r requirements.txt
       - run: pyinstaller main.py
       - run: xcopy aria2\ dist\main\aria2\ /e /i /y
       - uses: actions/upload-artifact@v3
