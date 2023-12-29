@@ -11,10 +11,12 @@ self_dirname = os.path.dirname(sys.argv[0])
 tmp_dirname = os.path.join(self_dirname, "tmp")
 os.makedirs(tmp_dirname, exist_ok=True)
 
+# exe的路径/在windows下是exe的路径
 aria2_exe_filename = os.path.join(
     self_dirname, "aria2", "aria2c.exe"
 )
 
+# macos下的aria2c的路径
 aria2_macos_filename = "aria2c"
 
 if getattr(sys, 'frozen', False):
@@ -28,6 +30,8 @@ else:
         self_dirname, "aria2", "aria2c"
     )
 
+# linux下的aria2c的路径
+aria2_linux_filename = "aria2c"
 
 def download_courses(course_links, course_filenames, video_dirname, no_record=False):
     if not no_record:
@@ -62,7 +66,31 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
             ],
             creationflags=subprocess.CREATE_NEW_CONSOLE
         )
-    else:
+    # linux
+    else if sys.platform == "linux":
+        tkinter.messagebox.showinfo("提示", "请查看运行输出信息(5s更新一次)")
+        try:
+            # Popen是异步的
+            proc = subprocess.Popen(
+                [
+                    aria2_linux_filename,
+                    "-d", video_dirname,
+                    "-i", aria2_txt_filename,
+                    "-x", str(16),
+                    "--auto-file-renaming=false",
+                    "--summary-interval=5",
+                ],
+                stdout=subprocess.PIPE
+            )
+
+            def getChildProcOutput():
+                for line in iter(proc.stdout.readline, b''):
+                    print(line.decode("utf-8"), end='')
+
+            thread = threading.Thread(target=getChildProcOutput)
+            thread.start()
+
+    else if sys.platform == "darwin":
         tkinter.messagebox.showinfo("提示", "请查看运行输出信息(5s更新一次)")
         try:
             # Popen是异步的
@@ -84,6 +112,8 @@ def download_courses(course_links, course_filenames, video_dirname, no_record=Fa
 
             thread = threading.Thread(target=getChildProcOutput)
             thread.start()
-
+    
+    else:
+        tkinter.messagebox.showerror("错误", "不支持的系统" + sys.platform)
         except KeyboardInterrupt:
             pass
