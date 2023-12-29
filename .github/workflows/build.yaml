@@ -83,7 +83,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: canvas-downloader-win-x86_64
-          path: dist/main/
+          path: dist/SJTU-Canvas视频下载器/
   linux:
     runs-on: ubuntu-latest
     steps:
