@@ -43,7 +43,7 @@ jobs:
           brew install libxml2 libcpuid autoconf automake atool libtool
           autoreconf -i
           ./configure ARIA2_STATIC=yes
-          make
+          make -j
       - name: Copy aria2c
         run: |
           cd aria2-git
