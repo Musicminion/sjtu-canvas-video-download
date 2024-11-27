@@ -1,6 +1,10 @@
 import tkinter as tk
 import sys
 from sjtu_canvas_video_main_frame import MainFrame
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 
 root = tk.Tk()
 root.columnconfigure(0, weight=1)
