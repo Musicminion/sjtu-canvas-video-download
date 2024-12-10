@@ -7,8 +7,73 @@ on:
   workflow_dispatch:
 
 jobs:
-  mac:
+  mac-m1:
     runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Update Submodules
+        run: |
+          git submodule update --recursive --remote
+      - name: Commit Update
+        uses: stefanzweifel/git-auto-commit-action@v5
+      # 后面对文件可能进行修改，不要在这里commit 
+      # 设置环境变量
+      - name: Get aria2 latset commit ID
+        run: |
+          cd aria2-git
+          echo "cache-name=$(git rev-parse HEAD)" >> ../aria2-hash.txt
+          brew install tree
+          tree
+      - name: Cache aria2
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: aria2-git
+          key: ${{ runner.os }}-aria2-${{ env.cache-name }}-${{ hashFiles('aria2-hash.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-aria2-${{ env.cache-name }}-
+            ${{ runner.os }}-aria2-
+            ${{ runner.os }}-
+      - if: steps.cache.outputs.cache-hit != 'true'
+        name: Compile aria2
+        run: |
+          cd aria2-git
+          brew install libxml2 autoconf automake atool libtool expat
+          brew link expat
+          autoreconf -i
+          ./configure ARIA2_STATIC=yes
+          make -j
+      - name: Copy aria2c
+        run: |
+          cd aria2-git
+          cp src/aria2c ../aria2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install -r requirements.txt
+      - name: Install macos dependencies
+        run: |
+          brew install create-dmg
+          brew install python-tk
+          brew install aria2
+      - name: Build MacOS application
+        run : |
+          pyinstaller --add-data './aria2/aria2c:./aria2' -n "SJTU-Canvas视频下载器" -w  --icon=icons/canvas.icns main.py 
+          mkdir -p dist/dmg
+          cp -r dist/SJTU-Canvas视频下载器.app dist/dmg
+      - name: Create dmg
+        run : 
+          create-dmg --volname "SJTU-Canvas视频下载器" --background "icons/background.png" --window-pos 200 120 --window-size 800 400 --icon-size 100 --icon SJTU-Canvas视频下载器.app 200 190 --hide-extension SJTU-Canvas视频下载器.app --app-drop-link 600 185 "dist/SJTU-Canvas视频下载器.dmg" "dist/dmg/" 
+      - name: Upload dmg
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: canvas-downloader-macos-Intel.dmg
+          path: "dist/SJTU-Canvas视频下载器.dmg"
+
+  mac-intel:
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
         with:
