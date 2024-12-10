@@ -40,7 +40,7 @@ jobs:
         name: Compile aria2
         run: |
           cd aria2-git
-          brew install libxml2 autoconf automake atool libtool expat
+          brew install libxml2 autoconf automake atool libtool expat gmp
           brew link expat
           export LIBEXPAT_LIBS="-L/usr/local/opt/expat/lib"
           export LIBEXPAT_CFLAGS="-I/usr/local/opt/expat/include"
