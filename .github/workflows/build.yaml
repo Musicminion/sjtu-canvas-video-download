@@ -45,8 +45,8 @@ jobs:
           echo 'CC=gcc' >> $GITHUB_ENV
           echo 'CXX=g++' >> $GITHUB_ENV
           autoreconf -i
-          ./configure ARIA2_STATIC=yes
-          make -j
+          ./configure --without-openssl --without-gnutls --with-appletls --disable-nls ARIA2_STATIC=yes
+          make -j"$(nproc 2> /dev/null || sysctl -n hw.ncpu)" check
       - name: Copy aria2c
         run: |
           cd aria2-git
