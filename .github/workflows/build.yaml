@@ -31,11 +31,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: aria2-git
-          key: ${{ runner.os }}-aria2-${{ env.cache-name }}-${{ hashFiles('aria2-hash.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-aria2-${{ env.cache-name }}-m1
-            ${{ runner.os }}-aria2-m1
-            ${{ runner.os }}-m1
+          key: ${{ runner.os }}-aria2M1-${{ env.cache-name }}-${{ hashFiles('aria2-hash.txt') }}
+          # restore-keys: |
+            # ${{ runner.os }}-aria2-${{ env.cache-name }}-m1
+            # ${{ runner.os }}-aria2-m1
+            # ${{ runner.os }}-m1
       - if: steps.cache.outputs.cache-hit != 'true'
         name: Compile aria2
         run: |
@@ -98,11 +98,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: aria2-git
-          key: ${{ runner.os }}-aria2-${{ env.cache-name }}-${{ hashFiles('aria2-hash.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-aria2-${{ env.cache-name }}-intel
-            ${{ runner.os }}-aria2-intel
-            ${{ runner.os }}-intel
+          key: ${{ runner.os }}-aria2Intel-${{ env.cache-name }}-${{ hashFiles('aria2-hash.txt') }}
+          # restore-keys: |
+          #   ${{ runner.os }}-aria2-${{ env.cache-name }}-
+          #   ${{ runner.os }}-aria2-
+          #   ${{ runner.os }}-
       - if: steps.cache.outputs.cache-hit != 'true'
         name: Compile aria2
         run: |
